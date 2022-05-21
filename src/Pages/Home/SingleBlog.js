@@ -3,25 +3,20 @@ import blog1 from '../../Assets/Blogs/blog-1.png';
 
 function SingleBlog() {
     return (
-        <div className="max-w-sm overflow-hidden rounded shadow-lg">
+        <div className="max-w-xs overflow-hidden">
             <img className="w-full" src={blog1} alt="Mountain" />
-            <div className="px-6 py-4">
-                <div className="mb-2 text-xl font-bold">Mountain</div>
-                <p className="text-base text-gray-700">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia,
-                    Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.
+            <div className=" py-4">
+                <p className="mb-2 text-xs font-bold uppercase text-accent">
+                    by Ram M December 27, 2021
+                </p>
+                <p className=" text-lg font-bold text-black">
+                    A luxury custom home builder new home remodeling
                 </p>
             </div>
-            <div className="px-6 pt-4 pb-2">
-                <span className="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
-                    #photography
-                </span>
-                <span className="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
-                    #travel
-                </span>
-                <span className="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
-                    #winter
-                </span>
+            <div className=" pt-4 pb-2">
+                <button className=" border-2 border-gray-700 px-7 py-3 font-josefin text-base font-bold text-black transition duration-500 ease-in-out hover:bg-gray-700 hover:text-white">
+                    View More
+                </button>
             </div>
         </div>
     );
