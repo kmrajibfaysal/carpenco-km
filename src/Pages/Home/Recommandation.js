@@ -4,11 +4,11 @@ function Recommandation() {
     return (
         <div className="bg-[url('https://i.ibb.co/18MfMGR/carpenter-banner-2.webp')]">
             <div
-                className="container mx-auto flex h-[550px] w-5/12 flex-col items-center justify-center px-4  font-karla uppercase
+                className="container mx-auto flex h-[550px] max-w-[700px] flex-col items-center justify-center font-karla uppercase
         text-white"
             >
                 <h4 className="text-md text-center font-josefin ">Power Tools You Should Own</h4>
-                <h4 className="my-2 text-center text-4xl ">
+                <h4 className="my-2 text-center text-3xl md:text-4xl ">
                     Enjoy the best quality and features made by our team
                 </h4>
                 <div className="my-4 flex space-x-3">

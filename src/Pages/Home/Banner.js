@@ -3,7 +3,7 @@ import React from 'react';
 
 function Banner() {
     return (
-        <div className="banner  bg-[url('https://i.ibb.co/C7PQxc0/banner.webp')] bg-cover bg-[center_right_-16rem] bg-no-repeat md:bg-center">
+        <div className="banner overflow-x-hidden  bg-[url('https://i.ibb.co/C7PQxc0/banner.webp')] bg-cover bg-[center_right_-16rem] bg-no-repeat md:bg-center">
             <div className="ml-12 flex h-[600px] max-w-[900px] flex-col flex-wrap items-start justify-center md:ml-20 md:h-[900px]">
                 <h2 className="text-md mb-4 font-josefin font-semibold text-white md:text-2xl lg:text-4xl">
                     Best Carpenter's Company

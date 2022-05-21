@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from './Banner';
+import HomeBlog from './HomeBlog';
 import Products from './Products';
 import Recommandation from './Recommandation';
 
@@ -9,6 +10,7 @@ function Home() {
             <Banner />
             <Products />
             <Recommandation />
+            <HomeBlog />
         </div>
     );
 }
