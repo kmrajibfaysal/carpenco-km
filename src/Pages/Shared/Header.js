@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Header() {
     return (
-        <nav className="sticky top-0 bg-[rgba(255,255,255,0.93)]  py-3">
+        <nav className="sticky top-0 z-50 bg-[rgba(255,255,255,0.93)]  py-3">
             <div className="container  mx-auto">
                 <div className="navbar font-josefin font-extrabold">
                     <div className="navbar-start md:hidden">

@@ -19,7 +19,7 @@ function Banner() {
                     rerum et ut.
                 </p>
 
-                <button className="scale-75 border-4 border-primary bg-primary px-7 py-3 font-josefin text-xl font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary md:scale-90  lg:scale-100">
+                <button className="scale-75 border-2 border-primary bg-primary px-7 py-3 font-josefin text-xl font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary md:scale-90  lg:scale-100">
                     READ MORE
                 </button>
             </div>
