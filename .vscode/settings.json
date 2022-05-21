@@ -25,5 +25,5 @@
   // tailwind Settings
   "css.validate": false,
   "tailwindCSS.emmetCompletions": true,
-  "cSpell.words": ["Buttel"]
+  "cSpell.words": ["Buttel", "Recommandation"]
 }
