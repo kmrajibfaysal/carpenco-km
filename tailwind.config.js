@@ -3,9 +3,13 @@ module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     theme: {
         extend: {
+            // backgroundImage: {
+            //     banner: "url('/src/Assets/banner.png')",
+            // },
             fontFamily: {
                 josefin: ['Josefin Sans', 'sans-serif'],
                 karla: ['Karla', 'sans-serif'],
+                raleway: ['Raleway', 'sans-serif'],
             },
         },
     },
