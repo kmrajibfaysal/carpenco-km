@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -28,16 +29,22 @@ function Header() {
                             className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
                         >
                             <li>
-                                <a>Home</a>
+                                <Link to="/">Home</Link>
                             </li>
                             <li>
-                                <a>Shop</a>
+                                <Link to="/shop">Shop</Link>
                             </li>
                             <li>
-                                <a>Blog</a>
+                                <Link to="/blog">Blog</Link>
                             </li>
                             <li>
-                                <a>Portfolio</a>
+                                <Link to="/portfolio">Portfolio</Link>
+                            </li>
+                            <li>
+                                <Link to="/dashboard">Dashboard</Link>
+                            </li>
+                            <li>
+                                <Link to="/login">Login</Link>
                             </li>
                         </ul>
                     </div>
@@ -45,31 +52,35 @@ function Header() {
                 <div className="navbar-start hidden md:block">
                     <ul className="nav-link menu menu-horizontal p-0 uppercase">
                         <li>
-                            <a>Home</a>
+                            <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <a>Shop</a>
+                            <Link to="/shop">Shop</Link>
                         </li>
                         <li>
-                            <a>Blog</a>
+                            <Link to="/blog">Blog</Link>
                         </li>
                         <li>
-                            <a>Portfolio</a>
+                            <Link to="/portfolio">Portfolio</Link>
                         </li>
                     </ul>
                 </div>
-                <div className="navbar-center">
+                <div className="navbar-center mx-auto">
                     <a className="cursor-pointer text-3xl font-bold normal-case  text-primary">
                         CARPENCO
                     </a>
                 </div>
-                <div className="navbar-end">
-                    <ul className="nav-link menu menu-horizontal   cursor-pointer space-x-2 px-2 uppercase">
-                        <li>Dashboard</li>
-                        <li>Login</li>
+                <div className="navbar-end hidden md:flex">
+                    <ul className="nav-link menu menu-horizontal   cursor-pointer p-0 uppercase">
+                        <li>
+                            <Link to="/dashboard">Dashboard</Link>
+                        </li>
+                        <li>
+                            <Link to="/login">Login</Link>
+                        </li>
                     </ul>
                     {/* search button */}
-                    <button className="btn btn-ghost btn-circle">
+                    {/* <button className="btn btn-ghost btn-circle">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -84,9 +95,9 @@ function Header() {
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                             />
                         </svg>
-                    </button>
+                    </button> */}
                     {/* notification button */}
-                    <button className="btn btn-ghost btn-circle">
+                    {/* <button className="btn btn-ghost btn-circle">
                         <div className="indicator">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +115,7 @@ function Header() {
                             </svg>
                             <span className="badge indicator-item badge-xs badge-primary" />
                         </div>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </nav>
