@@ -155,7 +155,7 @@ function Register() {
                                     className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
                                 >
                                     I agree to the{' '}
-                                    <a href="/" className="text-blue-600 hover:underline">
+                                    <a href="/" className="text-primary hover:underline">
                                         terms and conditions
                                     </a>
                                 </label>
