@@ -1,43 +1,35 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
-import Loading from '../Shared/Loading';
 import LoginPageHeader from '../Shared/LoginPageHeader';
 
-function Login() {
+function Register() {
     const navigate = useNavigate();
-
-    const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
-
-    const handleGoogleSignIn = async () => {
-        await signInWithGoogle();
-        toast('You are logged in!');
-    };
-
-    if (loading1) {
-        return <Loading />;
-    }
-
     return (
-        <div className="font-josefin ">
-            <LoginPageHeader text1="Account" />
+        <div className="font-josefin">
+            <LoginPageHeader text1="Create Account" />
             <div className="my-16 mx-auto max-w-xl overflow-hidden   rounded bg-gray-100 p-5 py-12 px-4 shadow-xl sm:px-6 lg:px-8">
-                <div className="flex justify-center">
-                    <button
-                        onClick={handleGoogleSignIn}
-                        className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary "
-                    >
-                        Sign in with Google
-                    </button>
-                </div>
                 <form className="space-y-4 transition-all duration-200">
-                    <div className="divider">Or</div>
                     <div>
                         <div className="grid gap-6">
+                            <div className="col-span-12">
+                                <input
+                                    type="text"
+                                    name="first-name"
+                                    id="first-name"
+                                    placeholder="First Name"
+                                    className="text-md mt-1 block w-full rounded border-gray-300 py-2  px-4 shadow-sm focus:outline-primary md:text-lg"
+                                />
+                            </div>
+                            <div className="col-span-12">
+                                <input
+                                    type="text"
+                                    name="last-name"
+                                    id="last-name"
+                                    placeholder="Last Name"
+                                    className="text-md mt-1 block w-full rounded border-gray-300 py-2  px-4 shadow-sm focus:outline-primary md:text-lg"
+                                />
+                            </div>
                             <div className="col-span-12">
                                 <input
                                     type="email"
@@ -60,41 +52,18 @@ function Login() {
                         </div>
                     </div>
 
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                            <input
-                                id="remember_me"
-                                name="remember_me"
-                                type="checkbox"
-                                className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
-                            />
-                            <label
-                                htmlFor="remember_me"
-                                className="ml-2 block text-sm text-gray-900"
-                            >
-                                Remember me
-                            </label>
-                        </div>
-
-                        <div className="text-sm">
-                            <a href="#" className="font-medium text-primary hover:underline">
-                                Forgot your password?
-                            </a>
-                        </div>
-                    </div>
-
                     <div className="flex flex-col items-center justify-center space-x-2">
                         <button className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary ">
-                            Sign in
+                            Create
                         </button>
                     </div>
                     <div className="divider" />
                     <div className="mx-auto flex w-2/3 flex-col items-center justify-around md:flex-row">
                         <button
-                            onClick={() => navigate('/register')}
+                            onClick={() => navigate('/login')}
                             className="cursor-pointer text-base hover:underline"
                         >
-                            Register
+                            Login
                         </button>
                         <button
                             onClick={() => navigate('/')}
@@ -109,4 +78,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;
