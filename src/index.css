@@ -8,4 +8,8 @@
   .nav-link li {
     @apply text-sm font-semibold hover:bg-transparent hover:text-primary;
   }
+
+  .customer-logo img {
+    @apply w-[200px] md:w-[250px];
+  }
 }
