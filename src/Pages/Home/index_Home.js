@@ -4,6 +4,7 @@ import ClientsLogo from './ClientsLogo';
 import HomeBlog from './HomeBlog';
 import Products from './Products';
 import Recommandation from './Recommandation';
+import Reviews from './Reviews';
 
 function Home() {
     return (
@@ -13,6 +14,7 @@ function Home() {
             <Recommandation />
             <HomeBlog />
             <ClientsLogo />
+            <Reviews />
         </div>
     );
 }
