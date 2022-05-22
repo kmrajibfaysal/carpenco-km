@@ -1,16 +1,17 @@
 import React from 'react';
+import payment from '../../Assets/ssl-commerce.png';
 
 function Footer() {
     return (
         <footer className="overflow-x-hidden bg-[url('https://i.ibb.co/fnQLv40/footer-bg.webp')]">
             <div className="container mx-auto text-center text-white lg:text-left">
                 <div className="mx-6 w-full py-10 text-center md:text-left">
-                    <div className="grid-1 grid md:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid-1 grid md:grid-cols-2 lg:grid-cols-4">
                         <div className="mr-4 flex flex-col flex-wrap">
                             <h6 className="mb-4 items-center justify-center text-3xl font-semibold uppercase text-primary md:justify-start">
                                 Carpenco
                             </h6>
-                            <p>
+                            <p className="mx-auto w-11/12">
                                 Here you can use rows and columns to organize your footer content.
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             </p>
@@ -143,6 +144,9 @@ function Footer() {
                                 </svg>
                                 + 01 234 567 89
                             </p>
+                        </div>
+                        <div>
+                            <img src={payment} alt="" />
                         </div>
                     </div>
                 </div>
