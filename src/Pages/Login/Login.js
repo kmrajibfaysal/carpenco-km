@@ -20,6 +20,7 @@ function Login() {
     } = useForm();
 
     const [seePass, setSeePass] = useState(false);
+    const [loginError, setLoginError] = useState(false);
 
     // handle redirect auth
     const navigate = useNavigate();
@@ -40,7 +41,7 @@ function Login() {
     const handleEmailLogin = async (data) => {
         const { email, password } = data;
         await signInWithEmailAndPassword(email, password);
-        errorEmail && toast.error('Email or password is Wrong!');
+        errorEmail && setLoginError(true);
     };
 
     if (loading1 || loadingEmail) {
@@ -134,6 +135,11 @@ function Login() {
                                     </button>
                                 </div>
                                 <p className="mt-3 text-red-500">{errors.password?.message}</p>
+                                {loginError && (
+                                    <p className="mt-3 text-red-500">
+                                        Email or password is incorrect. Please try again.
+                                    </p>
+                                )}
                             </div>
                         </div>
                     </div>
