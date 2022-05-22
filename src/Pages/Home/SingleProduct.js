@@ -21,7 +21,7 @@ function SingleProduct() {
                     <p>Available in stock: 32 </p>
                 </div>
                 <div className="flex items-start justify-start">
-                    <button className="scale-75 border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary md:scale-90  lg:scale-100">
+                    <button className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary ">
                         Place order
                     </button>
                 </div>

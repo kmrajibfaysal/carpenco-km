@@ -13,3 +13,10 @@
     @apply w-[200px] md:w-[250px];
   }
 }
+
+@layer base {
+  button:active,
+  button:focus {
+    @apply outline-none;
+  }
+}
