@@ -1,8 +1,23 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+import Loading from './Loading';
 
 function Header() {
+    const [user, loading] = useAuthState(auth);
+
+    const logOut = () => {
+        signOut(auth);
+        localStorage.removeItem('accessToken');
+    };
+    if (loading) {
+        return <Loading />;
+    }
     return (
         <nav className="sticky top-0 z-50 bg-[rgba(255,255,255,0.93)]  py-3">
             <div className="container  mx-auto">
@@ -45,7 +60,17 @@ function Header() {
                                     <Link to="/dashboard">Dashboard</Link>
                                 </li>
                                 <li>
-                                    <Link to="/login">Login</Link>
+                                    {!user ? (
+                                        <Link to="/login">Login</Link>
+                                    ) : (
+                                        <button
+                                            type="button"
+                                            className="text-sm font-semibold hover:bg-transparent hover:text-primary"
+                                            onClick={logOut}
+                                        >
+                                            Sign out
+                                        </button>
+                                    )}
                                 </li>
                             </ul>
                         </div>
@@ -67,9 +92,12 @@ function Header() {
                         </ul>
                     </div>
                     <div className="navbar-center mx-auto">
-                        <a className="cursor-pointer text-3xl font-bold normal-case  text-primary">
+                        <Link
+                            to="/"
+                            className="cursor-pointer text-3xl font-bold normal-case  text-primary"
+                        >
                             CARPENCO
-                        </a>
+                        </Link>
                     </div>
                     <div className="navbar-end hidden md:flex">
                         <ul className="nav-link menu menu-horizontal   cursor-pointer p-0 uppercase">
@@ -77,26 +105,44 @@ function Header() {
                                 <Link to="/dashboard">Dashboard</Link>
                             </li>
                             <li>
-                                <Link to="/login">Login</Link>
+                                {!user ? (
+                                    <Link to="/login">Login</Link>
+                                ) : (
+                                    <button
+                                        type="button"
+                                        className="text-sm font-semibold uppercase hover:bg-transparent hover:text-primary"
+                                        onClick={logOut}
+                                    >
+                                        Sign out
+                                    </button>
+                                )}
+                            </li>
+                            <li className="">
+                                <button
+                                    type="button"
+                                    className="text-sm font-semibold uppercase hover:bg-transparent hover:text-primary"
+                                >
+                                    {user?.displayName}
+                                </button>
                             </li>
                         </ul>
                         {/* search button */}
-                        {/* <button className="btn btn-ghost btn-circle">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                            />
-                        </svg>
-                    </button> */}
+                        <button className="btn btn-ghost btn-circle">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                />
+                            </svg>
+                        </button>
                         {/* notification button */}
                         {/* <button className="btn btn-ghost btn-circle">
                         <div className="indicator">
@@ -116,7 +162,7 @@ function Header() {
                             </svg>
                             <span className="badge indicator-item badge-xs badge-primary" />
                         </div>
-                    </button> */}
+                                </button> */}
                     </div>
                 </div>
             </div>
