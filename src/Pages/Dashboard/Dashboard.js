@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
@@ -11,7 +12,7 @@ function Dashboard() {
 
     // const [admin] = useAdmin(user);
     return (
-        <div className="drawer-mobile drawer font-josefin">
+        <div className="drawer-mobile  drawer font-josefin">
             <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 <LoginPageHeader text1="Dashboard" />

@@ -86,7 +86,6 @@ function Purchase() {
                                 type="number"
                                 name="quantity"
                                 id="quantity"
-                                defaultValue={product?.minOrder}
                             />
                             {error && (
                                 <p className="mt-3 text-red-500">

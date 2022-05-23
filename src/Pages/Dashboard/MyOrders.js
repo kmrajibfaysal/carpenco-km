@@ -1,13 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import ConfirmModal from './ConfirmModal';
 import SingleMyOrder from './SingleMyOrder';
 
 function MyOrders() {
     const [user] = useAuthState(auth);
+    const [cancellingOrder, setCancellingOrder] = useState(null);
+
     const { email } = user;
     const {
         data: orders,
@@ -41,11 +44,23 @@ function MyOrders() {
                     </thead>
                     <tbody>
                         {orders.map((order) => (
-                            <SingleMyOrder key={order._id} order={order} refetch={refetch} />
+                            <SingleMyOrder
+                                key={order._id}
+                                order={order}
+                                refetch={refetch}
+                                isLoading={isLoading}
+                                setCancellingOrder={setCancellingOrder}
+                            />
                         ))}
                     </tbody>
                 </table>
             </div>
+            <ConfirmModal
+                refetch={refetch}
+                isLoading={isLoading}
+                cancellingOrder={cancellingOrder}
+                setCancellingOrder={setCancellingOrder}
+            />
         </div>
     );
 }
