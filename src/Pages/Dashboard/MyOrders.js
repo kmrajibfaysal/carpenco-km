@@ -9,7 +9,11 @@ import SingleMyOrder from './SingleMyOrder';
 function MyOrders() {
     const [user] = useAuthState(auth);
     const { email } = user;
-    const { isLoading, data: orders } = useQuery('orders', () =>
+    const {
+        data: orders,
+        isLoading,
+        refetch,
+    } = useQuery('orders', () =>
         fetch(`http://localhost:5000/order/?email=${email}`).then((res) => res.json())
     );
 
@@ -29,15 +33,15 @@ function MyOrders() {
                                     <input type="checkbox" className="checkbox" />
                                 </label>
                             </th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                            <th />
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {orders.map((order) => (
-                            <SingleMyOrder key={order._id} order={order} />
+                            <SingleMyOrder key={order._id} order={order} refetch={refetch} />
                         ))}
                     </tbody>
                 </table>
