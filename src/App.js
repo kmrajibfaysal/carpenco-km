@@ -23,7 +23,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="/purchase/:id"
+                    path="/products/:productId"
                     element={
                         <RequiredAuth>
                             <Purchase />

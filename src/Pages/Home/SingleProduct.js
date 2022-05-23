@@ -1,7 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SingleProduct({ product }) {
-    const { name, sd, price, minOrder, stock, img } = product;
+    const { _id, name, sd, price, minOrder, stock, img } = product;
+    const navigate = useNavigate();
+    const handleOrder = (id) => {
+        navigate(`/products/${id}`);
+    };
     return (
         <div className="card w-96 rounded-none border-none font-josefin">
             <figure>
@@ -21,7 +26,10 @@ function SingleProduct({ product }) {
                     <p>Available in stock: {stock} </p>
                 </div>
                 <div className="flex items-start justify-start">
-                    <button className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary ">
+                    <button
+                        onClick={() => handleOrder(_id)}
+                        className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary "
+                    >
                         Place order
                     </button>
                 </div>
