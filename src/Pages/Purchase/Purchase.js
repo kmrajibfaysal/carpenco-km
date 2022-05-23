@@ -1,37 +1,55 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import LoginPageHeader from '../Shared/LoginPageHeader';
 
 function Purchase() {
-    const [qError, setQError] = useState(true);
     const { productId } = useParams();
+    const [error, setError] = useState(false);
+    const [quantity, setQuantity] = useState(null);
+    const [address, setAddress] = useState('');
     const [user, loading] = useAuthState(auth);
 
     const { isLoading, data: product } = useQuery('product', () =>
         fetch(`http://localhost:5000/products/${productId}`).then((res) => res.json())
     );
 
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm();
+    useEffect(() => {
+        if (quantity >= product?.minOrder && quantity <= product?.stock) {
+            setError(false);
+        } else {
+            setError(true);
+        }
+    }, [setError, quantity, product]);
 
-    const handleOrder = (data) => console.log(data);
+    const handleOrder = (event) => {
+        event.preventDefault();
+        const order = { user: user.email, product: product.name, quantity, address };
+
+        fetch(`http://localhost:5000/order`, {
+            method: 'POST',
+            headers: { 'content-Type': 'application/json' },
+            body: JSON.stringify(order),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.insertedId) {
+                    toast.success('Ordered Successfully!');
+                }
+            });
+    };
 
     if (isLoading || loading) return <Loading />;
     return (
         <div className="font-josefin">
             <LoginPageHeader text1={`Product/${product.name}`} />
             <form
-                onSubmit={handleSubmit(handleOrder)}
+                onSubmit={handleOrder}
                 className="card my-24 mx-auto max-w-7xl bg-base-100 shadow-xl lg:card-side"
             >
                 <figure className="w-full md:w-1/2">
@@ -55,27 +73,26 @@ function Purchase() {
                         <div className="text-lg">
                             Quantity:{' '}
                             <input
-                                {...register('quantity', {
-                                    required: { value: true, message: 'This is required!' },
-                                })}
+                                onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
                                 className="text-md ml-2 mt-1 inline-block w-1/2 rounded border border-gray-300 py-2  px-4 shadow-sm focus:outline-primary md:text-lg"
                                 type="number"
                                 name="quantity"
                                 id="quantity"
                                 defaultValue={product?.minOrder}
                             />
-                            {qError && (
+                            {error && (
                                 <p className="mt-3 text-red-500">
                                     {` Valid quantity: ${product?.minOrder} - ${product?.stock}`}
                                 </p>
                             )}
                         </div>
-                        <p className="text-red-500">{errors.name?.message}</p>
+                        {/* <p className="text-red-500">{errors.name?.message}</p> */}
                         <p className="text-lg font-semibold">Name: {user.displayName}</p>
                         <p className="text-lg font-semibold">Email: {user.email}</p>
                         <p>
                             <span>Your Address: </span>
                             <input
+                                onChange={(e) => setAddress(e.target.value)}
                                 aria-label="address"
                                 type="text"
                                 name="name"
@@ -85,7 +102,12 @@ function Purchase() {
                         </p>
                         <button
                             type="submit"
-                            className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary "
+                            disabled={!!error}
+                            className={`border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out  ${
+                                error
+                                    ? 'border-gray-300 bg-gray-300 text-gray-500'
+                                    : 'hover:border-primary  hover:bg-transparent hover:text-primary'
+                            }`}
                         >
                             Place order
                         </button>

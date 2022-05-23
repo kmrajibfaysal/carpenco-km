@@ -94,7 +94,7 @@ function Header() {
                     <div className="navbar-center mx-auto">
                         <Link
                             to="/"
-                            className="cursor-pointer text-3xl font-bold normal-case  text-primary"
+                            className="cursor-pointer text-3xl font-bold normal-case  text-primary outline-none"
                         >
                             CARPENCO
                         </Link>
