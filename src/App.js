@@ -1,5 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyOrders from './Pages/Dashboard/MyOrders';
+import MyProfile from './Pages/Dashboard/MyProfile';
+import MyReview from './Pages/Dashboard/MyReview';
 import Home from './Pages/Home/index_Home';
 import Login from './Pages/Login/Login';
 import Purchase from './Pages/Purchase/Purchase';
@@ -15,14 +19,6 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route
-                    path="/purchase"
-                    element={
-                        <RequiredAuth>
-                            <Purchase />
-                        </RequiredAuth>
-                    }
-                />
-                <Route
                     path="/products/:productId"
                     element={
                         <RequiredAuth>
@@ -30,6 +26,27 @@ function App() {
                         </RequiredAuth>
                     }
                 />
+                <Route
+                    path="/dashboard"
+                    element={
+                        <RequiredAuth>
+                            <Dashboard />
+                        </RequiredAuth>
+                    }
+                />
+                <Route
+                    path="dashboard"
+                    element={
+                        <RequiredAuth>
+                            <Dashboard />
+                        </RequiredAuth>
+                    }
+                >
+                    <Route index element={<MyOrders />} />
+                    <Route path="review" element={<MyReview />} />
+                    <Route path="profile" element={<MyProfile />} />
+                    {/* <Route path="payment/:id" element={<Payment />} /> */}
+                </Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
             </Routes>
