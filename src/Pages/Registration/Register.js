@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/aria-role */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     useCreateUserWithEmailAndPassword,
     useSendEmailVerification,
@@ -15,6 +15,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import LoginPageHeader from '../Shared/LoginPageHeader';
+import useToken from '../Shared/useToken';
 
 function Register() {
     const [seePass, setSeePass] = useState(false);
@@ -45,12 +46,18 @@ function Register() {
         //
     };
 
+    const [token] = useToken(userEmail);
+
+    useEffect(() => {
+        if (token) {
+            if (token) {
+                navigate(from, { replace: true });
+            }
+        }
+    }, [token, from, navigate]);
+
     if (loadingEmail || updating) {
         return <Loading />;
-    }
-
-    if (userEmail) {
-        navigate(from, { replace: true });
     }
     return (
         <div className="font-josefin">

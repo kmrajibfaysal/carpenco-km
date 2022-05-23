@@ -3,7 +3,7 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import LoginPageHeader from '../Shared/LoginPageHeader';
+import useToken from '../Shared/useToken';
 
 function Login() {
     const {
@@ -27,7 +28,7 @@ function Login() {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    const [signInWithGoogle, user1, loading1, errorGoogle] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, userGoogle, loading1, errorGoogle] = useSignInWithGoogle(auth);
 
     const handleGoogleSignIn = async () => {
         await signInWithGoogle();
@@ -44,12 +45,18 @@ function Login() {
         errorEmail && setLoginError(true);
     };
 
+    const [token] = useToken(userEmail || userGoogle);
+
+    useEffect(() => {
+        if (token) {
+            if (token) {
+                navigate(from, { replace: true });
+            }
+        }
+    }, [token, from, navigate]);
+
     if (loading1 || loadingEmail) {
         return <Loading />;
-    }
-
-    if (user1 || userEmail) {
-        navigate(from, { replace: true });
     }
 
     return (
