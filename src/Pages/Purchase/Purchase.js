@@ -29,7 +29,15 @@ function Purchase() {
 
     const handleOrder = (event) => {
         event.preventDefault();
-        const order = { user: user.email, product: product.name, quantity, address };
+        const order = {
+            user: user.email,
+            name: product.name,
+            quantity,
+            address,
+            img: product.img,
+            price: product.price,
+            sd: product.sd,
+        };
 
         fetch(`http://localhost:5000/order`, {
             method: 'POST',
