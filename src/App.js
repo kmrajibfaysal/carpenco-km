@@ -2,9 +2,11 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './Pages/Home/index_Home';
 import Login from './Pages/Login/Login';
+import Purchase from './Pages/Purchase/Purchase';
 import Register from './Pages/Registration/Register';
 import Footer from './Pages/Shared/Footer';
 import Header from './Pages/Shared/Header';
+import RequiredAuth from './Pages/Shared/RequireAuth';
 
 function App() {
     return (
@@ -12,6 +14,22 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route
+                    path="/purchase"
+                    element={
+                        <RequiredAuth>
+                            <Purchase />
+                        </RequiredAuth>
+                    }
+                />
+                <Route
+                    path="/purchase/:id"
+                    element={
+                        <RequiredAuth>
+                            <Purchase />
+                        </RequiredAuth>
+                    }
+                />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
             </Routes>

@@ -31,7 +31,7 @@ function Login() {
 
     const handleGoogleSignIn = async () => {
         await signInWithGoogle();
-        toast('You are logged in!');
+        toast.success('You are logged in!');
     };
 
     // email password login
