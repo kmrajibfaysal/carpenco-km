@@ -15,7 +15,6 @@ function ConfirmModal({ refetch, cancellingOrder, setCancellingOrder }) {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setCancellingOrder(null);
                 refetch();
             });
