@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -20,10 +21,10 @@ function Purchase() {
     );
 
     useEffect(() => {
-        if (quantity >= product?.minOrder && quantity <= product?.stock) {
-            setError(false);
-        } else {
+        if (quantity < product?.minOrder || quantity > product?.stock) {
             setError(true);
+        } else {
+            setError(false);
         }
     }, [quantity, setQuantity, product]);
 
@@ -89,9 +90,9 @@ function Purchase() {
                                 type="number"
                                 name="quantity"
                                 id="quantity"
-                                value={product.minOrder}
+                                defaultValue={product?.minOrder}
                             />
-                            {error && (
+                            {!(quantity >= product?.minOrder && quantity <= product.stock) && (
                                 <p className="mt-3 text-red-500">
                                     {` Valid quantity: ${product?.minOrder} - ${product?.stock}`}
                                 </p>
@@ -103,6 +104,7 @@ function Purchase() {
                         <p>
                             <span>Your Address: </span>
                             <input
+                                required
                                 onChange={(e) => setAddress(e.target.value)}
                                 aria-label="address"
                                 type="text"
