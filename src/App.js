@@ -18,6 +18,7 @@ import Register from './Pages/Registration/Register';
 import Footer from './Pages/Shared/Footer';
 import Header from './Pages/Shared/Header';
 import RequiredAuth from './Pages/Shared/RequireAuth';
+import Shop from './Pages/Shop/Shop';
 
 function App() {
     return (
@@ -46,6 +47,14 @@ function App() {
                     element={
                         <RequiredAuth>
                             <MakePayment />
+                        </RequiredAuth>
+                    }
+                />
+                <Route
+                    path="/shop"
+                    element={
+                        <RequiredAuth>
+                            <Shop />
                         </RequiredAuth>
                     }
                 />
