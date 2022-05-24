@@ -32,6 +32,9 @@ function Reviews() {
                                     The best solution for anyone who wants to work a flexible
                                     schedule but still earn a full-time income.
                                 </h3>
+                                <p className="mb-auto text-xl font-extrabold leading-8 md:text-2xl">
+                                    Rating: 5
+                                </p>
                                 <h4 className="mt-10 font-extrabold md:text-xl">
                                     Macauley Herring
                                 </h4>
@@ -49,6 +52,9 @@ function Reviews() {
                                     Flex on it so I can show it off to everyone. I will recommend
                                     you to my colleagues.
                                 </h3>
+                                <p className="mb-auto text-xl font-extrabold leading-8 md:text-2xl">
+                                    Rating: 5
+                                </p>
                                 <h4 className="mt-10 font-extrabold md:text-xl">Ivan Mathews</h4>
                                 <span className="font-bold text-gray-400">CTO at Nigodo</span>
                             </div>
@@ -61,6 +67,9 @@ function Reviews() {
                                     You won't regret it. We've seen amazing results already. Thanks
                                     guys, keep up the good work!
                                 </h3>
+                                <p className="mb-auto text-xl font-extrabold leading-8 md:text-2xl">
+                                    Rating: 5
+                                </p>
                                 <h4 className="mt-10 font-extrabold md:text-xl">Elen Benitez</h4>
                                 <span className="font-bold text-gray-400">CPO at Nigodo</span>
                             </div>

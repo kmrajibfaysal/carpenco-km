@@ -3,6 +3,7 @@ import Banner from './Banner';
 import BusinessSummery from './BusinessSummery';
 import ClientsLogo from './ClientsLogo';
 import HomeBlog from './HomeBlog';
+import NewlyArrivedProducts from './NewlyArrivedProducts';
 import Products from './Products';
 import Recommandation from './Recommandation';
 import Reviews from './Reviews';
@@ -13,6 +14,7 @@ function Home() {
             <Banner />
             <BusinessSummery />
             <Products />
+            <NewlyArrivedProducts />
             <Recommandation />
             <HomeBlog />
             <Reviews />

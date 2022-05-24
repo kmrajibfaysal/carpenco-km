@@ -1,15 +1,29 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 function AddProduct() {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
         console.log(data);
+
+        fetch(`http://localhost:5000/newProduct`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .then(() => {
+                toast.success('Product added!');
+                reset();
+            });
     };
+
     return (
         <div>
             <h2 className="mt-16 text-center text-4xl">Add A Product</h2>
