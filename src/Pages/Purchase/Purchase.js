@@ -25,7 +25,9 @@ function Purchase() {
         } else {
             setError(true);
         }
-    }, [setError, quantity, product]);
+    }, [quantity, setQuantity, product]);
+
+    useEffect(() => {}, []);
 
     const handleOrder = (event) => {
         event.preventDefault();
@@ -87,6 +89,7 @@ function Purchase() {
                                 type="number"
                                 name="quantity"
                                 id="quantity"
+                                value={product.minOrder}
                             />
                             {error && (
                                 <p className="mt-3 text-red-500">

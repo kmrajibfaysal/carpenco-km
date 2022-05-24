@@ -1,7 +1,22 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Loading from '../Shared/Loading';
+import SingleReview from './SingleReview';
 
 function Reviews() {
+    const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews`)
+            .then((res) => res.json())
+            .then((data) => setReviews(data))
+            .then(() => setLoading(false));
+    }, []);
+
+    if (loading) {
+        return <Loading />;
+    }
+
     return (
         <section className="py-26 bg-whit relative my-16 overflow-hidden font-josefin">
             <div className="container relative mx-auto px-4">
@@ -51,6 +66,8 @@ function Reviews() {
                             </div>
                         </div>
                     </div>
+                    {reviews &&
+                        reviews?.map((review) => <SingleReview key={review._id} data={review} />)}
                 </div>
             </div>
         </section>
