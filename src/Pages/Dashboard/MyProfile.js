@@ -1,21 +1,31 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
 function MyProfile() {
     const [user, loading] = useAuthState(auth);
+    const { email } = user;
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
+    const {
+        data: profile,
+        isLoading,
+        refetch,
+    } = useQuery('products', () =>
+        fetch(`http://localhost:5000/users/${email}`).then((res) => res.json())
+    );
+
     const onSubmit = (data) => {
         const newUser = {
-            name: user.name,
+            name: user.displayName,
             email: user.email,
             info: data,
         };
@@ -28,10 +38,11 @@ function MyProfile() {
             .then((res) => res.json())
             .then(() => {
                 toast.success('Saved!');
+                refetch();
             });
     };
 
-    if (loading) return <Loading />;
+    if (loading || isLoading) return <Loading />;
     return (
         <>
             <h2 className="mt-16 text-center text-4xl">My Profile</h2>
@@ -42,7 +53,7 @@ function MyProfile() {
                     </label>
                     <input
                         disabled
-                        defaultValue={user.displayName}
+                        defaultValue={profile?.name}
                         aria-label="enter name"
                         type="text"
                         className="text-md mt-1 block w-full rounded border border-gray-300 py-2  px-4 shadow-sm focus:outline-primary md:text-lg"
@@ -54,7 +65,7 @@ function MyProfile() {
                     </label>
                     <input
                         disabled
-                        defaultValue={user.email}
+                        defaultValue={profile?.email}
                         aria-label="enter name"
                         type="text"
                         className="text-md mt-1 block w-full rounded border border-gray-300 py-2  px-4 shadow-sm focus:outline-primary md:text-lg"
@@ -119,7 +130,7 @@ function MyProfile() {
 
                 <div className="flex flex-col items-center justify-center space-x-2">
                     <button className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary ">
-                        Save
+                        Update
                     </button>
                 </div>
             </form>
