@@ -53,7 +53,7 @@ function MyProfile() {
                     </label>
                     <input
                         disabled
-                        defaultValue={profile?.name}
+                        defaultValue={user?.displayName}
                         aria-label="enter name"
                         type="text"
                         className="text-md mt-1 block w-full rounded border border-gray-300 py-2  px-4 shadow-sm focus:outline-primary md:text-lg"
