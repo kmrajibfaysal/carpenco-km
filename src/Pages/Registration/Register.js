@@ -40,21 +40,21 @@ function Register() {
     const handleEmailRegister = async (data) => {
         const { name, email, password } = data;
         await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
         await toast('A verification email sent!');
         await sendEmailVerification();
-        await updateProfile({ displayName: name });
         //
     };
 
     const [token] = useToken(userEmail);
 
     useEffect(() => {
-        if (token) {
+        if (token && !updating) {
             if (token) {
                 navigate(from, { replace: true });
             }
         }
-    }, [token, from, navigate]);
+    }, [token, from, navigate, updating]);
 
     if (loadingEmail || updating) {
         return <Loading />;

@@ -1,7 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import AddProduct from './Pages/Dashboard/AddProduct';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import MakePayment from './Pages/Dashboard/MakePayment';
+import ManageOrders from './Pages/Dashboard/ManageOrders';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import MyReview from './Pages/Dashboard/MyReview';
@@ -51,9 +55,13 @@ function App() {
                         </RequiredAuth>
                     }
                 >
-                    <Route index element={<MyOrders />} />
+                    <Route index element={<MyProfile />} />
                     <Route path="review" element={<MyReview />} />
-                    <Route path="profile" element={<MyProfile />} />
+                    <Route path="myOrder" element={<MyOrders />} />
+                    <Route path="manage_all_order" element={<ManageOrders />} />
+                    <Route path="manage_products" element={<ManageProducts />} />
+                    <Route path="add_a_product" element={<AddProduct />} />
+                    <Route path="make_admin" element={<MakeAdmin />} />
                     {/* <Route path="payment/:id" element={<Payment />} /> */}
                 </Route>
                 <Route path="/login" element={<Login />} />
