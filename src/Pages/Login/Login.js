@@ -7,7 +7,6 @@ import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import LoginPageHeader from '../Shared/LoginPageHeader';
@@ -22,6 +21,7 @@ function Login() {
 
     const [seePass, setSeePass] = useState(false);
     const [loginError, setLoginError] = useState(false);
+    const [googleError, setGoogleError] = useState(false);
 
     // handle redirect auth
     const navigate = useNavigate();
@@ -32,7 +32,6 @@ function Login() {
 
     const handleGoogleSignIn = async () => {
         await signInWithGoogle();
-        toast.success('You are logged in!');
     };
 
     // email password login
@@ -144,7 +143,7 @@ function Login() {
                                 <p className="mt-3 text-red-500">{errors.password?.message}</p>
                                 {loginError && (
                                     <p className="mt-3 text-red-500">
-                                        Email or password is incorrect. Please try again.
+                                        Invalid credencial! Please try again.
                                     </p>
                                 )}
                             </div>

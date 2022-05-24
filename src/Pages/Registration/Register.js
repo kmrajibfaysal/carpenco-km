@@ -43,6 +43,18 @@ function Register() {
         await updateProfile({ displayName: name });
         await toast('A verification email sent!');
         await sendEmailVerification();
+
+        const newUser = {
+            name: data.name,
+            email: data.email,
+        };
+
+        fetch(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newUser),
+        });
+
         //
     };
 
