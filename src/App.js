@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import Blogs from './Pages/Blogs/Blogs';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
@@ -19,7 +20,7 @@ import RequiredAuth from './Pages/Shared/RequireAuth';
 
 function App() {
     return (
-        <div>
+        <div className="font-josefin">
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -66,6 +67,7 @@ function App() {
                 </Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/blog" element={<Blogs />} />
             </Routes>
             <ToastContainer
                 position="bottom-right"
