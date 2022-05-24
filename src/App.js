@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import MakePayment from './Pages/Dashboard/MakePayment';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import MyReview from './Pages/Dashboard/MyReview';
@@ -31,6 +32,14 @@ function App() {
                     element={
                         <RequiredAuth>
                             <Dashboard />
+                        </RequiredAuth>
+                    }
+                />
+                <Route
+                    path="/payment/:id"
+                    element={
+                        <RequiredAuth>
+                            <MakePayment />
                         </RequiredAuth>
                     }
                 />

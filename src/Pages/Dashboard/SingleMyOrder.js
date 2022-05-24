@@ -1,9 +1,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-alert */
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SingleMyOrder({ order, setCancellingOrder }) {
-    const { img, name, quantity, price } = order;
+    const { _id, img, name, quantity, price } = order;
+    const navigate = useNavigate();
+
+    const handlePayment = () => {
+        navigate(`/payment/${_id}`);
+    };
 
     return (
         <tr>
@@ -27,12 +33,21 @@ function SingleMyOrder({ order, setCancellingOrder }) {
             <td>{price}</td>
             <td>{quantity}</td>
             <th className="">
-                <button className="btn btn-ghost btn-xs text-green-500">Pay</button>
+                {!order.paid ? (
+                    <label
+                        onClick={() => handlePayment(order)}
+                        className="btn btn-ghost btn-xs text-green-500"
+                    >
+                        Pay
+                    </label>
+                ) : (
+                    <span className="text-md font-bold text-green-500">Paid</span>
+                )}
 
                 <label
                     onClick={() => setCancellingOrder(order)}
                     htmlFor="delete-confirm-modal"
-                    className="inline-block"
+                    className="btn btn-ghost btn-xs"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

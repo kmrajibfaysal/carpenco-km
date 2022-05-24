@@ -37,6 +37,7 @@ function Purchase() {
             img: product.img,
             price: product.price,
             sd: product.sd,
+            paid: false,
         };
 
         fetch(`http://localhost:5000/order`, {
