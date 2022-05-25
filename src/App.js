@@ -18,80 +18,83 @@ import Register from './Pages/Registration/Register';
 import Footer from './Pages/Shared/Footer';
 import Header from './Pages/Shared/Header';
 import RequiredAuth from './Pages/Shared/RequireAuth';
+import ScrollToTop from './Pages/Shared/ScrollToTop';
 import Shop from './Pages/Shop/Shop';
 
 function App() {
     return (
         <div className="font-josefin">
             <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route
-                    path="/products/:productId"
-                    element={
-                        <RequiredAuth>
-                            <Purchase />
-                        </RequiredAuth>
-                    }
+            <ScrollToTop>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route
+                        path="/products/:productId"
+                        element={
+                            <RequiredAuth>
+                                <Purchase />
+                            </RequiredAuth>
+                        }
+                    />
+                    <Route
+                        path="/dashboard"
+                        element={
+                            <RequiredAuth>
+                                <Dashboard />
+                            </RequiredAuth>
+                        }
+                    />
+                    <Route
+                        path="/payment/:id"
+                        element={
+                            <RequiredAuth>
+                                <MakePayment />
+                            </RequiredAuth>
+                        }
+                    />
+                    <Route
+                        path="/shop"
+                        element={
+                            <RequiredAuth>
+                                <Shop />
+                            </RequiredAuth>
+                        }
+                    />
+                    <Route
+                        path="dashboard"
+                        element={
+                            <RequiredAuth>
+                                <Dashboard />
+                            </RequiredAuth>
+                        }
+                    >
+                        <Route index element={<MyProfile />} />
+                        <Route path="review" element={<MyReview />} />
+                        <Route path="myOrder" element={<MyOrders />} />
+                        <Route path="manage_all_order" element={<ManageOrders />} />
+                        <Route path="manage_products" element={<ManageProducts />} />
+                        <Route path="add_a_product" element={<AddProduct />} />
+                        <Route path="make_admin" element={<MakeAdmin />} />
+                        {/* <Route path="payment/:id" element={<Payment />} /> */}
+                    </Route>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/blog" element={<Blogs />} />
+                    <Route path="/*" element={<NotFound />} />
+                </Routes>
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                    hideProgressBar
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss={false}
+                    draggable={false}
+                    pauseOnHover={false}
                 />
-                <Route
-                    path="/dashboard"
-                    element={
-                        <RequiredAuth>
-                            <Dashboard />
-                        </RequiredAuth>
-                    }
-                />
-                <Route
-                    path="/payment/:id"
-                    element={
-                        <RequiredAuth>
-                            <MakePayment />
-                        </RequiredAuth>
-                    }
-                />
-                <Route
-                    path="/shop"
-                    element={
-                        <RequiredAuth>
-                            <Shop />
-                        </RequiredAuth>
-                    }
-                />
-                <Route
-                    path="dashboard"
-                    element={
-                        <RequiredAuth>
-                            <Dashboard />
-                        </RequiredAuth>
-                    }
-                >
-                    <Route index element={<MyProfile />} />
-                    <Route path="review" element={<MyReview />} />
-                    <Route path="myOrder" element={<MyOrders />} />
-                    <Route path="manage_all_order" element={<ManageOrders />} />
-                    <Route path="manage_products" element={<ManageProducts />} />
-                    <Route path="add_a_product" element={<AddProduct />} />
-                    <Route path="make_admin" element={<MakeAdmin />} />
-                    {/* <Route path="payment/:id" element={<Payment />} /> */}
-                </Route>
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/blog" element={<Blogs />} />
-                <Route path="/*" element={<NotFound />} />
-            </Routes>
-            <ToastContainer
-                position="bottom-right"
-                autoClose={3000}
-                hideProgressBar
-                newestOnTop
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss={false}
-                draggable={false}
-                pauseOnHover={false}
-            />
-            <Footer />
+                <Footer />
+            </ScrollToTop>
         </div>
     );
 }
