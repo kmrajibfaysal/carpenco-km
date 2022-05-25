@@ -1,13 +1,22 @@
-# Pronex-Wood
+# Carpenco - A tools manufacturing website for carpenter
 
-### A full stack warehouse maintenance website. I have used ReactJs, Nodejs and MongoDB to build this awesome project. This is basically provides customers space to store their furniture product for short period or long period on daily bill basis.
+### A full stack Tools manufacturer website. I have used ReactJs,React-router, React-form, Firebase authentication, ExpressJs, Nodejs and MongoDB to build this awesome project. This is basically provides customers carpenter tools in whole sale. Minimum ordering amount is for a whole sale store.
 
-## Live Link: https://pronex-wood.web.app/
+## Live Link: https://carpenco-km.web.app/
+
+## Features
+
+- Ordering facilities
+- Crud operations
+- Admin role section
+- Dashboard section
+- Re stock and update facilities
+- Payment gateway using Stripe
 
 ## Technologies used-
 
-- React js
-- Tailwindcss, flowbite
+- React js, React router, React Form, Firebase authentication
+- Tailwindcss, daisyui
 - Nodejs, ExpressJs
 - MongoDB
 - JWT, React helmet, framer-motion
