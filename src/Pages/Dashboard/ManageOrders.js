@@ -16,7 +16,9 @@ function ManageOrders() {
         data: orders,
         isLoading,
         refetch,
-    } = useQuery('orders', () => fetch(`https://carpenco-server.herokuapp.com/orders`).then((res) => res.json()));
+    } = useQuery('orders', () =>
+        fetch(`https://carpenco-server.herokuapp.com/orders`).then((res) => res.json())
+    );
 
     if (isLoading) {
         return <Loading />;

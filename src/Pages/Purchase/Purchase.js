@@ -18,7 +18,9 @@ function Purchase() {
     const [user, loading] = useAuthState(auth);
 
     const { isLoading, data: product } = useQuery('product', () =>
-        fetch(`https://carpenco-server.herokuapp.com/products/${productId}`).then((res) => res.json())
+        fetch(`https://carpenco-server.herokuapp.com/products/${productId}`).then((res) =>
+            res.json()
+        )
     );
 
     useEffect(() => {
