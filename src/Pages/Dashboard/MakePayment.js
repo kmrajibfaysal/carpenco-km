@@ -2,32 +2,46 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import CheckoutForm from './CheckoutForm';
 
 const stripePromise = loadStripe(
-    'pk_test_51JUgRbSAaooknzkRSLm2KdH4l7MWVpOMbCyKQnX8NU9vG7zWqt5ss5weYFS2C7Q9OAYcMGXsePYoZS568bojJTOw00rpnuXKMs'
+    'pk_test_51L3PmVElder2JsSIhM0HITO7z1PhBBMY7XwnfyMVqtXLy7gggvQ6yogyaEbbAxIjVerjXsX54RoiKHENNKkRigoJ00FgOmekBz'
 );
 
 function MakePayment() {
+    const [user, loading] = useAuthState(auth);
     const { id } = useParams();
     const {
         isLoading,
         error,
-        data: products,
-    } = useQuery('products', () =>
+        data: product,
+    } = useQuery('product', () =>
         fetch(`http://localhost:5000/order/${id}`).then((res) => res.json())
     );
 
     if (isLoading) return <Loading />;
 
     return (
-        <div className="my-12 mx-auto h-[600px] max-w-md">
-            <Elements stripe={stripePromise}>
-                <CheckoutForm />
-            </Elements>
+        <div className="my-12 mx-auto h-[600px] max-w-md space-y-6">
+            <div className="card bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <h2 className="text-3xl">Hi, {user.displayName}</h2>
+                    <h2 className="card-title">Product name: {product?.name}</h2>
+                    <p>{product.sd}</p>
+                    <p>Order count: {product.quantity}</p>
+                    <p className="mb-6">
+                        Total price: {Math.ceil(product.price * parseInt(product.quantity, 10))}$
+                    </p>
+                    <Elements stripe={stripePromise}>
+                        <CheckoutForm product={product} />
+                    </Elements>
+                </div>
+            </div>
         </div>
     );
 }
