@@ -20,7 +20,9 @@ function NewlyArrivedProducts() {
             <h4 className="text-center  text-4xl text-black">Newly Arrived</h4>
             <div className="mx-auto mt-10 grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {products.length > 0 ? (
-                    products.map((product) => <SingleProduct key={product._id} product={product} />)
+                    products
+                        .slice(products.length - 3, products.length)
+                        .map((product) => <SingleProduct key={product._id} product={product} />)
                 ) : (
                     <p className="mx-auto text-center text-3xl font-bold text-primary">
                         Stay tuned!!
