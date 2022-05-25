@@ -9,9 +9,11 @@ function CheckoutForm({ product }) {
     const [cardError, setCardError] = useState(null);
     const [clientSecret, setClientSecret] = useState('');
     const [success, setSuccess] = useState(null);
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
     const elements = useElements();
 
-    const { price, user, quantity } = product;
+    const { _id, price, user, quantity } = product;
 
     useEffect(() => {
         fetch(`http://localhost:5000/create-payment-intent`, {
@@ -52,6 +54,7 @@ function CheckoutForm({ product }) {
 
         setCardError(error ? error.message : null);
         setSuccess('');
+        setProcessing(true);
 
         // Confirm card payment
         const { paymentIntent, error: IntentError } = await stripe.confirmCardPayment(
@@ -68,10 +71,29 @@ function CheckoutForm({ product }) {
 
         if (IntentError) {
             setCardError(IntentError.message);
-            setSuccess('');
+            setProcessing(false);
         } else {
             setCardError(null);
+            setTransactionId(paymentIntent.id);
             setSuccess('Congrats! Your payment is completed!');
+
+            // store payment on database
+            const payment = {
+                product: _id,
+                transactionId: paymentIntent.id,
+            };
+            fetch(`http://localhost:5000/order/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(payment),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    setProcessing(false);
+                    console.log(data);
+                });
         }
     };
 
@@ -97,13 +119,20 @@ function CheckoutForm({ product }) {
                 <button
                     type="submit"
                     className="my-6 rounded-lg bg-green-500 px-5 py-3"
-                    disabled={!stripe || !clientSecret}
+                    disabled={!stripe || !clientSecret || success}
                 >
                     Pay
                 </button>
             </form>
             {cardError && <p className="text-base text-red-600">{cardError}</p>}
-            {success && <p className="text-base text-green-600">{success}</p>}
+            {success && (
+                <div className="text-base text-green-600">
+                    <p>{success}</p>
+                    <p>
+                        Your transaction id: <span className="text-gray-800">{transactionId}</span>
+                    </p>
+                </div>
+            )}
         </>
     );
 }
