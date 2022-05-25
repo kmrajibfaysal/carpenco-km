@@ -13,6 +13,7 @@ import MyReview from './Pages/Dashboard/MyReview';
 import Home from './Pages/Home/index_Home';
 import Login from './Pages/Login/Login';
 import NotFound from './Pages/NotFound/NotFound';
+import Portfolio from './Pages/Portfolio/Portfolio';
 import Purchase from './Pages/Purchase/Purchase';
 import Register from './Pages/Registration/Register';
 import Footer from './Pages/Shared/Footer';
@@ -79,6 +80,7 @@ function App() {
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/portfolio" element={<Portfolio />} />
                     <Route path="/blog" element={<Blogs />} />
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
