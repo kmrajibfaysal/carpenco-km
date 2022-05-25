@@ -10,7 +10,7 @@ function MakeAdmin() {
         data: users,
         isLoading,
         refetch,
-    } = useQuery('users', () => fetch(`http://localhost:5000/users`).then((res) => res.json()));
+    } = useQuery('users', () => fetch(`https://carpenco-server.herokuapp.com/users`).then((res) => res.json()));
 
     if (isLoading) {
         return <Loading />;

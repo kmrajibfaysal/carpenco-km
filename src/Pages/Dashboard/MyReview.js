@@ -11,7 +11,7 @@ function Review() {
     } = useForm();
 
     const onSubmit = (data) => {
-        fetch(`http://localhost:5000/reviews`, {
+        fetch(`https://carpenco-server.herokuapp.com/reviews`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

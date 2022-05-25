@@ -12,7 +12,7 @@ function AddProduct() {
     const onSubmit = (data) => {
         console.log(data);
 
-        fetch(`http://localhost:5000/newProduct`, {
+        fetch(`https://carpenco-server.herokuapp.com/newProduct`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

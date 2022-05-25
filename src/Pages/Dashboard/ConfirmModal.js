@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function ConfirmModal({ refetch, cancellingOrder, setCancellingOrder }) {
     // const { name } = cancellingOrder;
     const handleCancelOrder = (product) => {
-        fetch(`http://localhost:5000/order/${cancellingOrder._id}`, {
+        fetch(`https://carpenco-server.herokuapp.com/order/${cancellingOrder._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

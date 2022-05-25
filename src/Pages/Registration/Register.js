@@ -49,7 +49,7 @@ function Register() {
             email: data.email,
         };
 
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://carpenco-server.herokuapp.com/users`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser),

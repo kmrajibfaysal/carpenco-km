@@ -18,7 +18,7 @@ function Purchase() {
     const [user, loading] = useAuthState(auth);
 
     const { isLoading, data: product } = useQuery('product', () =>
-        fetch(`http://localhost:5000/products/${productId}`).then((res) => res.json())
+        fetch(`https://carpenco-server.herokuapp.com/products/${productId}`).then((res) => res.json())
     );
 
     useEffect(() => {
@@ -45,7 +45,7 @@ function Purchase() {
             paid: false,
         };
 
-        fetch(`http://localhost:5000/order`, {
+        fetch(`https://carpenco-server.herokuapp.com/order`, {
             method: 'POST',
             headers: { 'content-Type': 'application/json' },
             body: JSON.stringify(order),

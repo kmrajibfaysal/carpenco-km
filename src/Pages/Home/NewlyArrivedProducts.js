@@ -6,7 +6,7 @@ function NewlyArrivedProducts() {
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/newProducts')
+        fetch('https://carpenco-server.herokuapp.com/newProducts')
             .then((res) => res.json())
             .then((data) => setProducts(data))
             .then(() => setLoading(false));

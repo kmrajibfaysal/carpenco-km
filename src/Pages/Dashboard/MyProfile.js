@@ -20,7 +20,7 @@ function MyProfile() {
         isLoading,
         refetch,
     } = useQuery('products', () =>
-        fetch(`http://localhost:5000/users/${email}`).then((res) => res.json())
+        fetch(`https://carpenco-server.herokuapp.com/users/${email}`).then((res) => res.json())
     );
 
     const onSubmit = (data) => {
@@ -30,7 +30,7 @@ function MyProfile() {
             info: data,
         };
 
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://carpenco-server.herokuapp.com/users`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser),

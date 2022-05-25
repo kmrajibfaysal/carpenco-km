@@ -21,7 +21,7 @@ function MakePayment() {
         error,
         data: product,
     } = useQuery('product', () =>
-        fetch(`http://localhost:5000/order/${id}`).then((res) => res.json())
+        fetch(`https://carpenco-server.herokuapp.com/order/${id}`).then((res) => res.json())
     );
 
     if (isLoading) return <Loading />;

@@ -5,7 +5,7 @@ import SingleBlog from './SingleBlog';
 
 function HomeBlog() {
     const { isLoading, data: blogs } = useQuery('blogs', () =>
-        fetch(`http://localhost:5000/blogs`).then((res) => res.json())
+        fetch(`https://carpenco-server.herokuapp.com/blogs`).then((res) => res.json())
     );
 
     if (isLoading) return <Loading />;

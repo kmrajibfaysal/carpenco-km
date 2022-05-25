@@ -17,7 +17,7 @@ function MyOrders() {
         isLoading,
         refetch,
     } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/order/?email=${email}`).then((res) => res.json())
+        fetch(`https://carpenco-server.herokuapp.com/order/?email=${email}`).then((res) => res.json())
     );
 
     if (isLoading) {

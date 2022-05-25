@@ -11,7 +11,7 @@ function Dashboard() {
     const [user, loading] = useAuthState(auth);
     const { email } = user;
     const { data: adminData, isLoading } = useQuery('adminData', () =>
-        fetch(`http://localhost:5000/users/${email}`).then((res) => res.json())
+        fetch(`https://carpenco-server.herokuapp.com/users/${email}`).then((res) => res.json())
     );
 
     if (isLoading || loading) return <Loading />;

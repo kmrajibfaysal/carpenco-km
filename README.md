@@ -1,9 +1,13 @@
-# This is a template repo to generate full configured react project with tailwind configurations and eslint set up for auto correction!
+# Pronex-Wood
 
-## You need to use this repo as template to generate new repo you desire!
+### A full stack warehouse maintenance website. I have used ReactJs, Nodejs and MongoDB to build this awesome project. This is basically provides customers space to store their furniture product for short period or long period on daily bill basis.
 
-## To install dependencies just run `yarn install` or `npm install`
+## Live Link: https://pronex-wood.web.app/
 
-## Or if you want to clone it directly, just clone it and delete the .git folder from the cloned folder then you will get fresh folder to work with, then you can run git init and other git command to push it back to your github account as a new project!
+## Technologies used-
 
-# Happy coding!!!!
+- React js
+- Tailwindcss, flowbite
+- Nodejs, ExpressJs
+- MongoDB
+- JWT, React helmet, framer-motion

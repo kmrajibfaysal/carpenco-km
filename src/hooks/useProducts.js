@@ -7,7 +7,7 @@ const useProducts = () => {
         error,
         refetch,
     } = useQuery('products', () =>
-        fetch(`http://localhost:5000/products`).then((res) => res.json())
+        fetch(`https://carpenco-server.herokuapp.com/products`).then((res) => res.json())
     );
     return [products, isLoading, error, refetch];
 };

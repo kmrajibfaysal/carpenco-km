@@ -17,7 +17,7 @@ function CheckoutForm({ product }) {
     const { _id, price, user, quantity } = product;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://carpenco-server.herokuapp.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ function CheckoutForm({ product }) {
                 product: _id,
                 transactionId: paymentIntent.id,
             };
-            fetch(`http://localhost:5000/order/${_id}`, {
+            fetch(`https://carpenco-server.herokuapp.com/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
