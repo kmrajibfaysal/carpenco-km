@@ -14,6 +14,7 @@ function Purchase() {
     const [error, setError] = useState(false);
     const [quantity, setQuantity] = useState(null);
     const [address, setAddress] = useState('');
+    const [addLoading, setAddLoading] = useState(false);
     const [user, loading] = useAuthState(auth);
 
     const { isLoading, data: product } = useQuery('product', () =>
@@ -32,6 +33,7 @@ function Purchase() {
 
     const handleOrder = (event) => {
         event.preventDefault();
+        setAddLoading(true);
         const order = {
             user: user.email,
             name: product.name,
@@ -50,13 +52,16 @@ function Purchase() {
         })
             .then((res) => res.json())
             .then((data) => {
+                setAddLoading(false);
                 if (data.insertedId) {
                     toast.success('Ordered Successfully!');
+                } else {
+                    toast.error('Something wrong!');
                 }
             });
     };
 
-    if (isLoading || loading) return <Loading />;
+    if (isLoading || loading || addLoading) return <Loading />;
     return (
         <div className="font-josefin">
             <LoginPageHeader text1={`Product/${product.name}`} />

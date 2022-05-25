@@ -3,6 +3,7 @@
 /* eslint-disable consistent-return */
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 function CheckoutForm({ product }) {
     const stripe = useStripe();
@@ -29,7 +30,7 @@ function CheckoutForm({ product }) {
                     setClientSecret(data.clientSecret);
                 }
             });
-    }, [price]);
+    }, [product]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -76,6 +77,7 @@ function CheckoutForm({ product }) {
             setCardError(null);
             setTransactionId(paymentIntent.id);
             setSuccess('Congrats! Your payment is completed!');
+            toast.success('Congrats! Your payment is completed!');
 
             // store payment on database
             const payment = {
