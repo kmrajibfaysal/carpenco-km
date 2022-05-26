@@ -57,20 +57,6 @@ function Dashboard() {
                             </li>
                         </>
                     )}
-
-                    {/* {admin && (
-                        <>
-                            <li>
-                                <Link to="/dashboard/users">All Users</Link>
-                            </li>
-                            <li>
-                                <Link to="/dashboard/addDoctor">Add a Doctor</Link>
-                            </li>
-                            <li>
-                                <Link to="/dashboard/manageDoctor">Manage Doctors</Link>
-                            </li>
-                        </>
-                    )} */}
                 </ul>
             </div>
         </div>

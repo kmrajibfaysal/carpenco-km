@@ -20,7 +20,11 @@ function ManageOrders() {
         fetch(`https://carpenco-server.herokuapp.com/orders`).then((res) => res.json())
     );
 
-    if (isLoading) {
+    const { data: admin, isLoading1 } = useQuery('admin', () =>
+        fetch(`https://carpenco-server.herokuapp.com/users/${email}`).then((res) => res.json())
+    );
+
+    if (isLoading || isLoading1) {
         return <Loading />;
     }
 
@@ -45,6 +49,7 @@ function ManageOrders() {
                     <tbody>
                         {orders.map((order) => (
                             <SingleMyOrder
+                                admin={admin}
                                 key={order._id}
                                 order={order}
                                 refetch={refetch}
