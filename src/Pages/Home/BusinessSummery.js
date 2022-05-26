@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function BusinessSummery() {
+    const navigate = useNavigate();
     return (
         <div className="container my-24 mx-auto">
             <h1 className="text-center text-xl font-bold uppercase text-primary md:text-5xl">
@@ -90,10 +92,16 @@ function BusinessSummery() {
                         <p className="">Don't hesitate to contact us</p>
                     </div>
                     <div className="card-actions  justify-center">
-                        <button className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary ">
+                        <button
+                            onClick={() => navigate('/contact')}
+                            className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary "
+                        >
                             Request For a Quote
                         </button>
-                        <button className="border-2 border-gray-700 bg-gray-700 px-7 py-3 font-josefin font-bold text-white transition duration-500 ease-in-out hover:bg-transparent hover:text-black">
+                        <button
+                            onClick={() => navigate('/contact')}
+                            className="border-2 border-gray-700 bg-gray-700 px-7 py-3 font-josefin font-bold text-white transition duration-500 ease-in-out hover:bg-transparent hover:text-black"
+                        >
                             Contact Us
                         </button>
                     </div>
