@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Banner() {
+    const navigate = useNavigate();
     return (
         <div className="banner overflow-x-hidden  bg-[url('https://i.ibb.co/C7PQxc0/banner.webp')] bg-cover bg-[center_right_-16rem] bg-no-repeat md:bg-center">
             <div className="container mx-auto">
@@ -14,14 +16,16 @@ function Banner() {
                     </h1>
 
                     <p className="mb-4 font-josefin text-sm text-white md:text-xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-                        aspernatur possimus quidem ea consequatur facere nam numquam, aperiam esse
-                        tenetur voluptatibus voluptatem. Consequatur, esse reprehenderit reiciendis
-                        quisquam rerum et ut.
+                        We manufacture top class carpenter tools from fast class wood and metal. Our
+                        goal is to make a good relation with our customer for long run by providing
+                        best class products we have.
                     </p>
 
-                    <button className="scale-75 border-2 border-primary bg-primary px-7 py-3 font-josefin text-xl font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary md:scale-90  lg:scale-100">
-                        READ MORE
+                    <button
+                        onClick={() => navigate('/shop')}
+                        className="scale-75 border-2 border-primary bg-primary px-7 py-3 font-josefin text-xl font-semibold uppercase text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary md:scale-90  lg:scale-100"
+                    >
+                        Explore
                     </button>
                 </div>
             </div>

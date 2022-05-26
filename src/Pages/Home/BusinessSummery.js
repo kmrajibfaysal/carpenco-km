@@ -10,7 +10,7 @@ function BusinessSummery() {
             <h1 className="mx-auto my-1 w-11/12 border-b-2 text-center text-sm uppercase text-accent md:my-4 md:w-1/3 md:text-2xl">
                 We offer best in class tools customer need
             </h1>
-            <div className="my-16 mx-auto flex max-w-7xl items-center justify-center">
+            <div className="my-16 mx-auto flex max-w-7xl flex-col items-center justify-center md:flex-row">
                 <div className="flex w-1/4 flex-col items-center justify-center">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -82,14 +82,14 @@ function BusinessSummery() {
                 </div>
             </div>
             <div className="card mx-auto w-3/4 bg-base-100 shadow-lg shadow-primary">
-                <div className="card-body flex-row justify-between">
+                <div className="card-body flex-col justify-between md:flex-row">
                     <div>
                         <h2 className="card-title text-xl font-bold text-primary">
                             Have any question about us or get a products request?
                         </h2>
                         <p className="">Don't hesitate to contact us</p>
                     </div>
-                    <div className="card-actions justify-end">
+                    <div className="card-actions  justify-center">
                         <button className="border-2 border-primary bg-primary px-7 py-3 font-josefin text-base font-bold text-white transition duration-500 ease-in-out hover:border-primary  hover:bg-transparent hover:text-primary ">
                             Request For a Quote
                         </button>

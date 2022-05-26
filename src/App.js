@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Blogs from './Pages/Blogs/Blogs';
+import Contact from './Pages/Contact/Contact';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
@@ -24,7 +25,7 @@ import Shop from './Pages/Shop/Shop';
 
 function App() {
     return (
-        <div className="font-josefin">
+        <div className="overflow-x-hidden font-josefin">
             <Header />
             <ScrollToTop>
                 <Routes>
@@ -82,6 +83,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/portfolio" element={<Portfolio />} />
                     <Route path="/blog" element={<Blogs />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
                 <ToastContainer

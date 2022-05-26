@@ -16,59 +16,61 @@ function Footer() {
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             </p>
                         </div>
-                        <div className="grid grid-cols-2">
-                            <div className="">
-                                <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                                    Products
-                                </h6>
-                                <p className="mb-4">
-                                    <a href="#!" className="text-white">
-                                        Angular
-                                    </a>
-                                </p>
-                                <p className="mb-4">
-                                    <a href="#!" className="text-white">
-                                        React
-                                    </a>
-                                </p>
-                                <p className="mb-4">
-                                    <a href="#!" className="text-white">
-                                        Vue
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-white">
-                                        Laravel
-                                    </a>
-                                </p>
-                            </div>
-                            <div className="">
-                                <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                                    Useful links
-                                </h6>
-                                <p className="mb-4">
-                                    <a href="#!" className="text-white">
-                                        Pricing
-                                    </a>
-                                </p>
-                                <p className="mb-4">
-                                    <a href="#!" className="text-white">
-                                        Settings
-                                    </a>
-                                </p>
-                                <p className="mb-4">
-                                    <a href="#!" className="text-white">
-                                        Orders
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-white">
-                                        Help
-                                    </a>
-                                </p>
+                        <div className="hidden md:block">
+                            <div className="grid grid-cols-2">
+                                <div className="">
+                                    <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+                                        Products
+                                    </h6>
+                                    <p className="mb-4">
+                                        <a href="#!" className="text-white">
+                                            Angular
+                                        </a>
+                                    </p>
+                                    <p className="mb-4">
+                                        <a href="#!" className="text-white">
+                                            React
+                                        </a>
+                                    </p>
+                                    <p className="mb-4">
+                                        <a href="#!" className="text-white">
+                                            Vue
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <a href="#!" className="text-white">
+                                            Laravel
+                                        </a>
+                                    </p>
+                                </div>
+                                <div className="">
+                                    <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+                                        Useful links
+                                    </h6>
+                                    <p className="mb-4">
+                                        <a href="#!" className="text-white">
+                                            Pricing
+                                        </a>
+                                    </p>
+                                    <p className="mb-4">
+                                        <a href="#!" className="text-white">
+                                            Settings
+                                        </a>
+                                    </p>
+                                    <p className="mb-4">
+                                        <a href="#!" className="text-white">
+                                            Orders
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <a href="#!" className="text-white">
+                                            Help
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div className="">
+                        <div className=" mt-2">
                             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                                 Contact
                             </h6>
@@ -145,7 +147,7 @@ function Footer() {
                                 + 01 234 567 89
                             </p>
                         </div>
-                        <div>
+                        <div className="hidden md:block">
                             <img src={payment} alt="" />
                         </div>
                     </div>
