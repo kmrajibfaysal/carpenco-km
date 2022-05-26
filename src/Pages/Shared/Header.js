@@ -22,8 +22,53 @@ function Header() {
         <nav className="sticky top-0 z-50 bg-[rgba(255,255,255,0.93)]  py-3">
             <div className="container  mx-auto">
                 <div className="navbar font-josefin font-extrabold">
-                    <div className="navbar-start md:hidden">
-                        <div className="dropdown ">
+                    <div className="navbar-start hidden md:block">
+                        <ul className="nav-link menu menu-horizontal p-0 uppercase">
+                            <li>
+                                <Link to="/">Home</Link>
+                            </li>
+                            <li>
+                                <Link to="/shop">Shop</Link>
+                            </li>
+                            <li>
+                                <Link to="/blog">Blog</Link>
+                            </li>
+                            <li>
+                                <Link to="/portfolio">Portfolio</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="md:hidden">
+                        <label
+                            htmlFor="dashboard-sidebar"
+                            className="btn btn-ghost drawer-button lg:hidden"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M4 6h16M4 12h8m-8 6h16"
+                                />
+                            </svg>
+                        </label>
+                    </div>
+                    <div className="navbar-center mx-auto">
+                        <Link
+                            to="/"
+                            className="cursor-pointer text-3xl font-bold normal-case  text-primary outline-none"
+                        >
+                            CARPENCO
+                        </Link>
+                    </div>
+                    <div className="navbar-end md:hidden">
+                        <div className="dropdown dropdown-end">
                             <label tabIndex="0" className="btn btn-ghost btn-circle">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -74,30 +119,6 @@ function Header() {
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <div className="navbar-start hidden md:block">
-                        <ul className="nav-link menu menu-horizontal p-0 uppercase">
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/shop">Shop</Link>
-                            </li>
-                            <li>
-                                <Link to="/blog">Blog</Link>
-                            </li>
-                            <li>
-                                <Link to="/portfolio">Portfolio</Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="navbar-center mx-auto">
-                        <Link
-                            to="/"
-                            className="cursor-pointer text-3xl font-bold normal-case  text-primary outline-none"
-                        >
-                            CARPENCO
-                        </Link>
                     </div>
                     <div className="navbar-end hidden md:flex">
                         <ul className="nav-link menu menu-horizontal   cursor-pointer p-0 uppercase">
