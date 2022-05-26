@@ -13,7 +13,12 @@ function SingleMyOrder({ order, setCancellingOrder, admin }) {
         navigate(`/payment/${_id}`);
     };
 
-    const checkAdmin = () => admin.role === 'admin';
+    const checkAdmin = () => {
+        if (admin && admin.role === 'admin') {
+            return true;
+        }
+        return false;
+    };
 
     return (
         <tr>
@@ -36,7 +41,7 @@ function SingleMyOrder({ order, setCancellingOrder, admin }) {
             </td>
             <td>{price}</td>
             <td>{quantity}</td>
-            <th className={checkAdmin && 'hidden'}>
+            <th className={admin?.role && 'hidden'}>
                 {!order.paid ? (
                     <label
                         onClick={() => handlePayment(order)}
@@ -71,7 +76,7 @@ function SingleMyOrder({ order, setCancellingOrder, admin }) {
                     </label>
                 )}
             </th>
-            <th className={!checkAdmin && 'hidden'}>
+            <th className={!admin?.role ? 'hidden' : ''}>
                 {!order.paid ? (
                     <>
                         <button className="btn btn-ghost btn-xs text-gray-800">Unpaid</button>
@@ -99,7 +104,9 @@ function SingleMyOrder({ order, setCancellingOrder, admin }) {
                         onClick={() => setShipment(!shipment)}
                         className="text-md font-bold text-green-500"
                     >
-                        {shipment ? <span className="text-gray-600">Pending</span> : 'Shipped'}
+                        <span>
+                            {shipment ? <span className="text-gray-600">Pending</span> : 'Shipped'}
+                        </span>
                     </button>
                 )}
             </th>
